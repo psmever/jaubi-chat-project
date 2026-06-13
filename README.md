@@ -18,16 +18,33 @@ packages/
 ## Local Database
 
 Docker is used only for the local MariaDB database.
+This project uses `docker-compose` commands for the local Colima environment.
 
 ```sh
-docker compose up -d mariadb
+pnpm db:up
 ```
 
 The default local connection string is:
 
 ```txt
-mysql://jaubi_chat:jaubi_chat@localhost:3306/jaubi_chat
+mysql://jaubi_chat:jaubi_chat@localhost:23306/jaubi_chat
 ```
+
+Useful local database commands:
+
+```sh
+pnpm db:up
+pnpm db:down
+pnpm db:restart
+pnpm db:ps
+pnpm db:logs
+pnpm db:reset
+```
+
+`pnpm db:reset` recreates the local MariaDB volume, waits until MariaDB is healthy, then prepares both local databases:
+
+- `jaubi_chat`
+- `jaubi_chat_shadow`
 
 ## Package Names
 

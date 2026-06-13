@@ -4,7 +4,7 @@ services:
     container_name: jaubi-chat-local-mariadb
     restart: unless-stopped
     ports:
-      - "${MARIADB_PORT:-3306}:3306"
+      - "${MARIADB_PORT:-23306}:3306"
     environment:
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
       MARIADB_DATABASE: ${MARIADB_DATABASE:-jaubi_chat}
@@ -13,7 +13,6 @@ services:
       TZ: Asia/Seoul
     volumes:
       - mariadb_local_data:/var/lib/mysql
-      - ./docker/mariadb/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 10s
