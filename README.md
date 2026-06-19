@@ -46,6 +46,33 @@ pnpm db:reset
 - `jaubi_chat`
 - `jaubi_chat_shadow`
 
+## Make Commands
+
+Run `make` or `make help` to see the available development commands.
+
+```sh
+make app:backend
+make app:web
+make app:mobile
+make db:up
+make prisma:generate
+make prisma:migrate
+make build
+```
+
+The Make targets call the existing pnpm workspace scripts, so `package.json` remains the command source of truth.
+
+## API Collection
+
+Open the `bruno` directory as a collection in Bruno and select the `local` environment.
+The collection currently includes the implemented backend health check:
+
+```txt
+GET {{baseUrl}}/health
+```
+
+Add requests to this collection alongside new REST API endpoints. Keep credentials and tokens out of committed environment files.
+
 ## Package Names
 
 - Root workspace: `jaubi-chat-project`
