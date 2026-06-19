@@ -1,3 +1,4 @@
 dist/
 coverage/
 .prisma/
+src/generated/prisma/

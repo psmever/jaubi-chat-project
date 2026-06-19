@@ -46,6 +46,14 @@ pnpm db:reset
 - `jaubi_chat`
 - `jaubi_chat_shadow`
 
+Generate backend JWT secrets with:
+
+```sh
+pnpm jwt:generate
+```
+
+Use `pnpm jwt:generate -- --force` only when you intentionally want to rotate the secrets in `apps/backend/.env`.
+
 ## Make Commands
 
 Run `make` or `make help` to see the available development commands.

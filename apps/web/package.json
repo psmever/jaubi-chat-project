@@ -2,9 +2,6 @@
   "name": "@jaubi-chat/web",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "next lint",
     "typecheck": "tsc --noEmit"
   }
 }

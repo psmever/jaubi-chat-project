@@ -1,2 +1,2 @@
-export * from './realtime/events';
-export * from './realtime/payloads';
+export * from './realtime/events.js';
+export * from './realtime/payloads.js';

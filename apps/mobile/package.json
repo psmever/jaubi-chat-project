@@ -2,9 +2,6 @@
   "name": "@jaubi-chat/mobile",
   "private": true,
   "scripts": {
-    "build": "expo export",
-    "dev": "expo start",
-    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   }
 }

@@ -1,10 +1,10 @@
 {
   "name": "jaubi-chat-project",
   "private": true,
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@11.8.0",
   "engines": {
     "node": ">=24 <25",
-    "pnpm": "11.6.0"
+    "pnpm": "11.8.0"
   },
   "scripts": {
     "build": "turbo build",
@@ -26,14 +26,19 @@
     "db:init": "sh scripts/db-init.sh",
     "db:wait": "sh scripts/db-wait.sh",
     "db:reset": "sh scripts/db-reset.sh",
-    "backend:dev": "pnpm --filter @jaubi-chat/backend dev",
-    "backend:build": "pnpm --filter @jaubi-chat/backend build",
-    "backend:typecheck": "pnpm --filter @jaubi-chat/backend typecheck",
+    "jwt:generate": "sh scripts/generate-jwt-secrets.sh",
+    "backend:dev": "turbo dev --filter=@jaubi-chat/backend",
+    "backend:build": "turbo build --filter=@jaubi-chat/backend",
+    "backend:typecheck": "turbo typecheck --filter=@jaubi-chat/backend",
     "backend:prisma:generate": "pnpm --filter @jaubi-chat/backend prisma:generate",
     "backend:prisma:migrate": "pnpm --filter @jaubi-chat/backend prisma:migrate"
   },
   "devDependencies": {
-    "turbo": "^2.3.3",
-    "typescript": "5.9.3"
+    "@eslint/js": "10.0.1",
+    "eslint": "10.5.0",
+    "globals": "17.6.0",
+    "turbo": "2.9.18",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.61.1"
   }
 }

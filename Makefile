@@ -5,43 +5,47 @@ PNPM ?= pnpm
 .PHONY: help install dev app\:backend app\:web app\:mobile build lint typecheck \
 	docker\:build docker\:pull docker\:up docker\:down docker\:ps docker\:logs docker\:reset \
 	db\:up db\:down db\:restart db\:ps db\:logs db\:init db\:wait db\:reset \
-	prisma\:generate prisma\:migrate
+	prisma\:generate prisma\:migrate jwt\:generate check
 
 help:
 	@printf '%s\n' \
 		'Usage: make <target>' \
 		'' \
 		'Development' \
-		'  install          Install workspace dependencies' \
-		'  dev              Start all apps in development mode' \
-		'  app:backend      Start the NestJS backend' \
-		'  app:web          Start the Next.js web app' \
-		'  app:mobile       Start the Expo mobile app' \
+		'  install          Install deps' \
+		'  dev              Start all apps' \
+		'  app:backend      Start backend' \
+		'  app:web          Start web app' \
+		'  app:mobile       Start mobile app' \
 		'' \
 		'Validation' \
-		'  build            Build all workspace packages' \
-		'  lint             Lint all workspace packages' \
-		'  typecheck        Type-check all workspace packages' \
+		'  check            Run lint and typecheck' \
+		'  build            Build packages' \
+		'  lint             Lint packages' \
+		'  typecheck        Type-check packages' \
 		'' \
 		'Database' \
-		'  db:up            Start MariaDB' \
-		'  db:down          Stop MariaDB' \
-		'  db:restart       Restart MariaDB' \
-		'  db:ps            Show MariaDB status' \
-		'  db:logs          Follow MariaDB logs' \
-		'  db:init          Initialize local databases' \
-		'  db:wait          Wait for MariaDB readiness' \
-		'  db:reset         Recreate and initialize MariaDB data' \
+		'  db:up            Start DB' \
+		'  db:down          Stop DB' \
+		'  db:restart       Restart DB' \
+		'  db:ps            Show DB status' \
+		'  db:logs          Tail DB logs' \
+		'  db:init          Init local DBs' \
+		'  db:wait          Wait for DB' \
+		'  db:reset         Reset local DB data' \
 		'  prisma:generate  Generate Prisma Client' \
-		'  prisma:migrate   Create and apply a development migration' \
+		'  prisma:migrate   Run dev migration' \
+		'' \
+		'Secrets' \
+		'  jwt:generate     Generate JWT secrets' \
 		'' \
 		'Docker' \
-		'  docker:build     Build Docker services' \
-		'  docker:pull      Pull Docker service images' \
-		'  docker:up        Start all Docker services' \
-		'  docker:down      Stop all Docker services' \
-		'  docker:ps        Show Docker service status' \
-		'  docker:logs      Follow Docker service logs' \
+		'  docker:build     Build' \
+		'  docker:pull      Pull' \
+		'  docker:up        Start' \
+		'  docker:down      Stop' \
+		'  docker:ps        Show status' \
+		'  docker:logs      Tail logs' \
 		'  docker:reset     Remove services, volumes, and orphans'
 
 install:
@@ -66,6 +70,10 @@ lint:
 	$(PNPM) run lint
 
 typecheck:
+	$(PNPM) run typecheck
+
+check:
+	$(PNPM) run lint
 	$(PNPM) run typecheck
 
 docker\:build:
@@ -118,3 +126,6 @@ prisma\:generate:
 
 prisma\:migrate:
 	$(PNPM) run backend:prisma:migrate
+
+jwt\:generate:
+	$(PNPM) run jwt:generate
