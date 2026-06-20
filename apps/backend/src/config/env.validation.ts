@@ -6,9 +6,9 @@ const environmentSchema = z
       .enum(["local", "development", "test", "production"])
       .default("local"),
 
-    BACKEND_PORT: z.coerce.number().int().min(1).max(65535).default(4000),
+    BACKEND_PORT: z.coerce.number().int().min(1).max(65535).default(4001),
 
-    BACKEND_CORS_ORIGIN: z.string().url().default(`http://localhost:3002`),
+    BACKEND_CORS_ORIGIN: z.string().url().default(`http://localhost:4002`),
 
     DATABASE_URL: z
       .string()

@@ -20,7 +20,7 @@ import {
 
 @WebSocketGateway({
   cors: {
-    origin: process.env.BACKEND_CORS_ORIGIN ?? 'http://localhost:3000',
+    origin: 'http://localhost:4002',
     credentials: true
   }
 })

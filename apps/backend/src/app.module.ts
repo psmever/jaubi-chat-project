@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { appConfig } from './config/app.config.ts';
+import { validateEnvironment } from './config/env.validation.ts';
 import { AuthModule } from './modules/auth/auth.module.ts';
 import { HealthModule } from './modules/health/health.module.ts';
 import { MessagesModule } from './modules/messages/messages.module.ts';
@@ -11,7 +13,9 @@ import { UsersModule } from './modules/users/users.module.ts';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
+      load: [appConfig],
+      validate: validateEnvironment
     }),
     PrismaModule,
     HealthModule,
