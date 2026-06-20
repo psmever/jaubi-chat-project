@@ -15,7 +15,7 @@ import { UsersModule } from './modules/users/users.module.ts';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [appConfig],
-      validate: validateEnvironment
+      validate: validateEnvironment,
     }),
     PrismaModule,
     HealthModule,
@@ -23,7 +23,7 @@ import { UsersModule } from './modules/users/users.module.ts';
     UsersModule,
     RoomsModule,
     MessagesModule,
-    RealtimeModule
-  ]
+    RealtimeModule,
+  ],
 })
 export class AppModule {}

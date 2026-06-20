@@ -37,6 +37,7 @@
     "@eslint/js": "10.0.1",
     "eslint": "10.5.0",
     "globals": "17.6.0",
+    "prettier": "^3.8.4",
     "turbo": "2.9.18",
     "typescript": "6.0.3",
     "typescript-eslint": "8.61.1"

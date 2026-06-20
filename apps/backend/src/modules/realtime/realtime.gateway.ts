@@ -5,7 +5,7 @@ import {
   OnGatewayDisconnect,
   SubscribeMessage,
   WebSocketGateway,
-  WebSocketServer
+  WebSocketServer,
 } from '@nestjs/websockets';
 import { randomUUID } from 'node:crypto';
 import { Server, Socket } from 'socket.io';
@@ -15,14 +15,14 @@ import {
   RoomJoinPayload,
   RoomLeavePayload,
   SocketEvents,
-  TypingPayload
+  TypingPayload,
 } from '@jaubi-chat/api-contract';
 
 @WebSocketGateway({
   cors: {
-    origin: 'http://localhost:4002',
-    credentials: true
-  }
+    origin: `${process.env.BACKEND_CORS_ORIGIN}`,
+    credentials: true,
+  },
 })
 export class RealtimeGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
@@ -57,7 +57,7 @@ export class RealtimeGateway implements OnGatewayConnection, OnGatewayDisconnect
       senderId: client.id,
       content: payload.content,
       createdAt: new Date().toISOString(),
-      clientMessageId: payload.clientMessageId
+      clientMessageId: payload.clientMessageId,
     };
 
     this.server.to(payload.roomId).emit(SocketEvents.MessageCreated, createdMessage);

@@ -91,25 +91,57 @@ CREATE TABLE `device_tokens` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `room_members` ADD CONSTRAINT `room_members_roomId_fkey` FOREIGN KEY (`roomId`) REFERENCES `rooms`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `room_members`
+  ADD CONSTRAINT `room_members_roomId_fkey`
+  FOREIGN KEY (`roomId`) REFERENCES `rooms`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `room_members` ADD CONSTRAINT `room_members_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `room_members`
+  ADD CONSTRAINT `room_members_userId_fkey`
+  FOREIGN KEY (`userId`) REFERENCES `users`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `messages` ADD CONSTRAINT `messages_roomId_fkey` FOREIGN KEY (`roomId`) REFERENCES `rooms`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_roomId_fkey`
+  FOREIGN KEY (`roomId`) REFERENCES `rooms`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `messages` ADD CONSTRAINT `messages_senderId_fkey` FOREIGN KEY (`senderId`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_senderId_fkey`
+  FOREIGN KEY (`senderId`) REFERENCES `users`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `message_reads` ADD CONSTRAINT `message_reads_messageId_fkey` FOREIGN KEY (`messageId`) REFERENCES `messages`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `message_reads`
+  ADD CONSTRAINT `message_reads_messageId_fkey`
+  FOREIGN KEY (`messageId`) REFERENCES `messages`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `message_reads` ADD CONSTRAINT `message_reads_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `message_reads`
+  ADD CONSTRAINT `message_reads_userId_fkey`
+  FOREIGN KEY (`userId`) REFERENCES `users`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `attachments` ADD CONSTRAINT `attachments_messageId_fkey` FOREIGN KEY (`messageId`) REFERENCES `messages`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `attachments`
+  ADD CONSTRAINT `attachments_messageId_fkey`
+  FOREIGN KEY (`messageId`) REFERENCES `messages`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `device_tokens` ADD CONSTRAINT `device_tokens_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `device_tokens`
+  ADD CONSTRAINT `device_tokens_userId_fkey`
+  FOREIGN KEY (`userId`) REFERENCES `users`(`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;

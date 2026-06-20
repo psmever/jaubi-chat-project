@@ -11,23 +11,21 @@ export default tseslint.config(
       '**/.turbo/**',
       '**/coverage/**',
       '**/node_modules/**',
-      '**/src/generated/prisma/**'
-    ]
+      '**/src/generated/prisma/**',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
     files: ['apps/backend/**/*.ts', 'packages/**/*.ts'],
-    languageOptions: {
-      globals: globals.node
-    },
+    languageOptions: { globals: globals.node },
     rules: {
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
-          argsIgnorePattern: '^_'
-        }
-      ]
-    }
-  }
+          argsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
 );

@@ -1,10 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const environmentSchema = z
   .object({
-    NODE_ENV: z
-      .enum(["local", "development", "test", "production"])
-      .default("local"),
+    NODE_ENV: z.enum(['local', 'development', 'test', 'production']).default('local'),
 
     BACKEND_PORT: z.coerce.number().int().min(1).max(65535).default(4001),
 
@@ -13,14 +11,14 @@ const environmentSchema = z
     DATABASE_URL: z
       .string()
       .min(1)
-      .refine((value) => value.startsWith("mysql://"), {
-        message: "DATABASE_URL must start with mysql://",
+      .refine((value) => value.startsWith('mysql://'), {
+        message: 'DATABASE_URL must start with mysql://',
       }),
 
     SHADOW_DATABASE_URL: z
       .string()
-      .refine((value) => value.startsWith("mysql://"), {
-        message: "SHADOW_DATABASE_URL must start with mysql://",
+      .refine((value) => value.startsWith('mysql://'), {
+        message: 'SHADOW_DATABASE_URL must start with mysql://',
       })
       .optional(),
 
@@ -29,15 +27,11 @@ const environmentSchema = z
   })
   .passthrough();
 
-export function validateEnvironment(
-  config: Record<string, unknown>,
-): Record<string, unknown> {
+export function validateEnvironment(config: Record<string, unknown>): Record<string, unknown> {
   const result = environmentSchema.safeParse(config);
 
   if (!result.success) {
-    const messages = result.error.issues
-      .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
-      .join("\n");
+    const messages = result.error.issues.map((issue) => `${issue.path.join('.')}: ${issue.message}`).join('\n');
 
     throw new Error(`Environment validation failed:\n${messages}`);
   }

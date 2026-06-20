@@ -5,7 +5,7 @@ export const SocketEvents = {
   MessageCreated: 'message:created',
   MessageRead: 'message:read',
   TypingStart: 'typing:start',
-  TypingStop: 'typing:stop'
+  TypingStop: 'typing:stop',
 } as const;
 
 export type SocketEvent = (typeof SocketEvents)[keyof typeof SocketEvents];
