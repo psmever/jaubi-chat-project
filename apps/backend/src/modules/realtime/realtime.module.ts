@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { RealtimeGateway } from './realtime.gateway.js';
+import { RealtimeGateway } from './realtime.gateway.ts';
 
 @Module({
   providers: [RealtimeGateway]
