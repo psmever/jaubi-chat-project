@@ -2,7 +2,18 @@
 
 PNPM ?= pnpm
 
+FILE_PROJECTS := backend web mobile
+
+PROJECT_ROOT_backend := apps/backend
+PROJECT_ROOT_web := apps/web
+PROJECT_ROOT_mobile := apps/mobile
+
+CREATE_FILE_PROJECT := $(strip \
+	$(foreach project,$(FILE_PROJECTS),\
+		$(if $($(project)),$(project))))
+
 .PHONY: help install dev app\:backend app\:web app\:mobile build lint typecheck \
+	create\:file \
 	db\:build db\:pull db\:up db\:down db\:restart db\:ps db\:logs db\:init db\:wait db\:reset \
 	prisma\:generate prisma\:migrate jwt\:generate check
 
@@ -17,6 +28,9 @@ help:
 		'  app:backend      Start backend' \
 		'  app:web          Start web app' \
 		'  app:mobile       Start mobile app' \
+		'' \
+		'Files' \
+		'  create:file      Create a file under an app src directory' \
 		'' \
 		'Validation' \
 		'  check            Run lint and typecheck' \
@@ -54,6 +68,27 @@ app\:web:
 
 app\:mobile:
 	$(PNPM) --filter @jaubi-chat/mobile dev
+
+create\:file:
+	@test "$(words $(CREATE_FILE_PROJECT))" -eq 1 || { \
+		echo "Usage: make create:file backend=path/to/file.ts"; \
+		echo "Projects: $(FILE_PROJECTS)"; \
+		exit 2; \
+	}
+	@relative="$($(CREATE_FILE_PROJECT))"; \
+	case "$$relative" in \
+		/*|../*|*/../*|*/..) \
+			echo "Path must be relative to src: $$relative"; \
+			exit 2 ;; \
+	esac; \
+	target="$(PROJECT_ROOT_$(CREATE_FILE_PROJECT))/src/$$relative"; \
+	test ! -e "$$target" || { \
+		echo "File already exists: $$target"; \
+		exit 2; \
+	}; \
+	mkdir -p "$$(dirname "$$target")"; \
+	touch "$$target"; \
+	echo "Created: $$target"
 
 build:
 	$(PNPM) run build
