@@ -19,40 +19,40 @@ CREATE_FILE_PROJECT := $(strip \
 
 help:
 	@printf '%s\n' \
-		'Usage: make <target>' \
+		'사용법: make <target>' \
 		'' \
-		'Development' \
-		'  install          Install deps' \
-		'  db:up            Start local DB' \
-		'  dev              Start all apps' \
-		'  app:backend      Start backend' \
-		'  app:web          Start web app' \
-		'  app:mobile       Start mobile app' \
+		'개발' \
+		'  install          의존성 설치' \
+		'  db:up            로컬 DB 시작' \
+		'  dev              모든 앱 실행' \
+		'  app:backend      백엔드 실행' \
+		'  app:web          웹 앱 실행' \
+		'  app:mobile       모바일 앱 실행' \
 		'' \
-		'Files' \
-		'  create:file      Create a file under an app src directory' \
+		'파일' \
+		'  create:file      앱의 src 디렉터리 아래에 파일 생성' \
 		'' \
-		'Validation' \
-		'  check            Run lint and typecheck' \
-		'  build            Build packages' \
-		'  lint             Lint packages' \
-		'  typecheck        Type-check packages' \
+		'검증' \
+		'  check            lint와 typecheck 실행' \
+		'  build            패키지 빌드' \
+		'  lint             패키지 lint 실행' \
+		'  typecheck        패키지 타입 검사' \
 		'' \
-		'Database' \
-		'  db:build         Build DB container' \
-		'  db:pull          Pull DB image' \
-		'  db:down          Stop DB' \
-		'  db:restart       Restart DB' \
-		'  db:ps            Show DB status' \
-		'  db:logs          Tail DB logs' \
-		'  db:init          Init local DBs' \
-		'  db:wait          Wait for DB' \
-		'  db:reset         Reset local DB data' \
-		'  prisma:generate  Generate Prisma Client' \
-		'  prisma:migrate   Run dev migration' \
+		'데이터베이스' \
+		'  db:build         DB 컨테이너 빌드' \
+		'  db:pull          DB 이미지 가져오기' \
+		'  db:down          DB 중지' \
+		'  db:restart       DB 재시작' \
+		'  db:ps            DB 상태 확인' \
+		'  db:logs          DB 로그 보기' \
+		'  db:init          로컬 DB 초기화' \
+		'  db:wait          DB 준비 대기' \
+		'  db:reset         로컬 DB 데이터 초기화' \
+		'  prisma:generate  Prisma Client 생성' \
+		'  prisma:migrate   개발용 마이그레이션 실행' \
 		'' \
-		'Secrets' \
-		'  jwt:generate     Generate JWT secrets'
+		'비밀값' \
+		'  jwt:generate     JWT 비밀키 생성'
 
 install:
 	$(PNPM) install
