@@ -3,8 +3,7 @@
 PNPM ?= pnpm
 
 .PHONY: help install dev app\:backend app\:web app\:mobile build lint typecheck \
-	docker\:build docker\:pull docker\:up docker\:down docker\:ps docker\:logs docker\:reset \
-	db\:up db\:down db\:restart db\:ps db\:logs db\:init db\:wait db\:reset \
+	db\:build db\:pull db\:up db\:down db\:restart db\:ps db\:logs db\:init db\:wait db\:reset \
 	prisma\:generate prisma\:migrate jwt\:generate check
 
 help:
@@ -13,6 +12,7 @@ help:
 		'' \
 		'Development' \
 		'  install          Install deps' \
+		'  db:up            Start local DB' \
 		'  dev              Start all apps' \
 		'  app:backend      Start backend' \
 		'  app:web          Start web app' \
@@ -25,7 +25,8 @@ help:
 		'  typecheck        Type-check packages' \
 		'' \
 		'Database' \
-		'  db:up            Start DB' \
+		'  db:build         Build DB container' \
+		'  db:pull          Pull DB image' \
 		'  db:down          Stop DB' \
 		'  db:restart       Restart DB' \
 		'  db:ps            Show DB status' \
@@ -37,16 +38,7 @@ help:
 		'  prisma:migrate   Run dev migration' \
 		'' \
 		'Secrets' \
-		'  jwt:generate     Generate JWT secrets' \
-		'' \
-		'Docker' \
-		'  docker:build     Build' \
-		'  docker:pull      Pull' \
-		'  docker:up        Start' \
-		'  docker:down      Stop' \
-		'  docker:ps        Show status' \
-		'  docker:logs      Tail logs' \
-		'  docker:reset     Remove services, volumes, and orphans'
+		'  jwt:generate     Generate JWT secrets'
 
 install:
 	$(PNPM) install
@@ -76,26 +68,11 @@ check:
 	$(PNPM) run lint
 	$(PNPM) run typecheck
 
-docker\:build:
+db\:build:
 	$(PNPM) run docker:build
 
-docker\:pull:
+db\:pull:
 	$(PNPM) run docker:pull
-
-docker\:up:
-	$(PNPM) run docker:up
-
-docker\:down:
-	$(PNPM) run docker:down
-
-docker\:ps:
-	$(PNPM) run docker:ps
-
-docker\:logs:
-	$(PNPM) run docker:logs
-
-docker\:reset:
-	$(PNPM) run docker:reset
 
 db\:up:
 	$(PNPM) run db:up
