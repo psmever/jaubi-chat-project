@@ -6,7 +6,7 @@
   "editor.formatOnSave": true,
   // 저장 시 ESLint fix도 함께 적용한다.
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   // printWidth 140을 편집기에서 시각적으로 맞춘다.
   "editor.rulers": [140],
