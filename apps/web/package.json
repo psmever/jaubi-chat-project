@@ -1,7 +1,7 @@
 {
-  "name": "@jaubi-chat/web",
-  "private": true,
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  }
+    "name": "@jaubi-chat/web",
+    "private": true,
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    }
 }

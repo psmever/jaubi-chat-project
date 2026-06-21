@@ -7,15 +7,15 @@ import { PrismaModule } from './modules/prisma/prisma.module.ts';
 import { RealtimeModule } from './modules/realtime/realtime.module.ts';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [appConfig],
-      validate: validateEnvironment,
-    }),
-    PrismaModule,
-    HealthModule,
-    RealtimeModule,
-  ],
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+            load: [appConfig],
+            validate: validateEnvironment,
+        }),
+        PrismaModule,
+        HealthModule,
+        RealtimeModule,
+    ],
 })
 export class AppModule {}

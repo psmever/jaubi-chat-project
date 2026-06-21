@@ -1,19 +1,19 @@
 {
-  "name": "@jaubi-chat/shared",
-  "private": true,
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+    "name": "@jaubi-chat/shared",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "lint": "eslint .",
+        "typecheck": "tsc --noEmit"
     }
-  },
-  "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
-  }
 }

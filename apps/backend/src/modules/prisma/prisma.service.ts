@@ -5,17 +5,17 @@ import { PrismaClient } from '../../generated/prisma/client.ts';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
-  constructor(configService: ConfigService) {
-    const databaseUrl = configService.getOrThrow<string>('DATABASE_URL');
+    constructor(configService: ConfigService) {
+        const databaseUrl = configService.getOrThrow<string>('DATABASE_URL');
 
-    super({ adapter: new PrismaMariaDb(databaseUrl) });
-  }
+        super({ adapter: new PrismaMariaDb(databaseUrl) });
+    }
 
-  async onModuleInit() {
-    await this.$connect();
-  }
+    async onModuleInit() {
+        await this.$connect();
+    }
 
-  async onModuleDestroy() {
-    await this.$disconnect();
-  }
+    async onModuleDestroy() {
+        await this.$disconnect();
+    }
 }

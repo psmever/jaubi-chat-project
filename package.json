@@ -1,45 +1,45 @@
 {
-  "name": "jaubi-chat-project",
-  "private": true,
-  "packageManager": "pnpm@11.8.0",
-  "engines": {
-    "node": ">=24 <25",
-    "pnpm": "11.8.0"
-  },
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "typecheck": "turbo typecheck",
-    "docker:build": "docker-compose build",
-    "docker:pull": "docker-compose pull",
-    "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down",
-    "docker:ps": "docker-compose ps",
-    "docker:logs": "docker-compose logs -f",
-    "docker:reset": "docker-compose down -v --remove-orphans",
-    "db:up": "docker-compose up -d mariadb",
-    "db:down": "docker-compose stop mariadb",
-    "db:restart": "docker-compose restart mariadb",
-    "db:ps": "docker-compose ps mariadb",
-    "db:logs": "docker-compose logs -f mariadb",
-    "db:init": "sh scripts/db-init.sh",
-    "db:wait": "sh scripts/db-wait.sh",
-    "db:reset": "sh scripts/db-reset.sh",
-    "jwt:generate": "sh scripts/generate-jwt-secrets.sh",
-    "backend:dev": "turbo dev --filter=@jaubi-chat/backend",
-    "backend:build": "turbo build --filter=@jaubi-chat/backend",
-    "backend:typecheck": "turbo typecheck --filter=@jaubi-chat/backend",
-    "backend:prisma:generate": "pnpm --filter @jaubi-chat/backend prisma:generate",
-    "backend:prisma:migrate": "pnpm --filter @jaubi-chat/backend prisma:migrate"
-  },
-  "devDependencies": {
-    "@eslint/js": "10.0.1",
-    "eslint": "10.5.0",
-    "globals": "17.6.0",
-    "prettier": "^3.8.4",
-    "turbo": "2.9.18",
-    "typescript": "6.0.3",
-    "typescript-eslint": "8.61.1"
-  }
+    "name": "jaubi-chat-project",
+    "private": true,
+    "packageManager": "pnpm@11.8.0",
+    "engines": {
+        "node": ">=24 <25",
+        "pnpm": "11.8.0"
+    },
+    "scripts": {
+        "build": "turbo build",
+        "dev": "turbo dev",
+        "lint": "turbo lint",
+        "typecheck": "turbo typecheck",
+        "docker:build": "docker-compose build",
+        "docker:pull": "docker-compose pull",
+        "docker:up": "docker-compose up -d",
+        "docker:down": "docker-compose down",
+        "docker:ps": "docker-compose ps",
+        "docker:logs": "docker-compose logs -f",
+        "docker:reset": "docker-compose down -v --remove-orphans",
+        "db:up": "docker-compose up -d mariadb",
+        "db:down": "docker-compose stop mariadb",
+        "db:restart": "docker-compose restart mariadb",
+        "db:ps": "docker-compose ps mariadb",
+        "db:logs": "docker-compose logs -f mariadb",
+        "db:init": "sh scripts/db-init.sh",
+        "db:wait": "sh scripts/db-wait.sh",
+        "db:reset": "sh scripts/db-reset.sh",
+        "jwt:generate": "sh scripts/generate-jwt-secrets.sh",
+        "backend:dev": "turbo dev --filter=@jaubi-chat/backend",
+        "backend:build": "turbo build --filter=@jaubi-chat/backend",
+        "backend:typecheck": "turbo typecheck --filter=@jaubi-chat/backend",
+        "backend:prisma:generate": "pnpm --filter @jaubi-chat/backend prisma:generate",
+        "backend:prisma:migrate": "pnpm --filter @jaubi-chat/backend prisma:migrate"
+    },
+    "devDependencies": {
+        "@eslint/js": "10.0.1",
+        "eslint": "10.5.0",
+        "globals": "17.6.0",
+        "prettier": "^3.8.4",
+        "turbo": "2.9.18",
+        "typescript": "6.0.3",
+        "typescript-eslint": "8.61.1"
+    }
 }
