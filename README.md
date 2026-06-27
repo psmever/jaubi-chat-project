@@ -56,7 +56,7 @@ Use `pnpm jwt:generate -- --force` only when you intentionally want to rotate th
 
 ## Make Commands
 
-Run `make` or `make help` to see the available development commands.
+사용 가능한 개발 명령은 `make` 또는 `make help`로 확인할 수 있습니다.
 
 ```sh
 make app:backend
@@ -68,7 +68,7 @@ make prisma:migrate
 make build
 ```
 
-The Make targets call the existing pnpm workspace scripts, so `package.json` remains the command source of truth.
+Make target은 기존 pnpm workspace script를 호출합니다. 따라서 실제 명령 정의의 기준은 `package.json`입니다.
 
 ## API Collection
 
