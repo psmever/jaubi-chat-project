@@ -11,7 +11,7 @@ async function bootstrap() {
     const globalPrefix = configService.get<string>('app.globalPrefix', 'api');
     const corsOrigin = configService.get<string>('app.corsOrigin', 'http://localhost:4002');
 
-    app.setGlobalPrefix(globalPrefix);
+    app.setGlobalPrefix(globalPrefix, { exclude: ['/'] });
     app.enableCors({
         origin: corsOrigin,
         credentials: true,

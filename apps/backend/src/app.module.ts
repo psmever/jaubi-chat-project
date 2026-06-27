@@ -5,6 +5,7 @@ import { validateEnvironment } from './config/env.validation.ts';
 import { HealthModule } from './modules/health/health.module.ts';
 import { PrismaModule } from './modules/prisma/prisma.module.ts';
 import { RealtimeModule } from './modules/realtime/realtime.module.ts';
+import { AppController } from './app.controller.ts';
 
 @Module({
     imports: [
@@ -17,5 +18,6 @@ import { RealtimeModule } from './modules/realtime/realtime.module.ts';
         HealthModule,
         RealtimeModule,
     ],
+    controllers: [AppController],
 })
 export class AppModule {}
