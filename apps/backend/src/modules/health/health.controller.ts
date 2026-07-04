@@ -8,6 +8,8 @@ type HealthResponse = {
     uuid: string;
 };
 
+const serverUuid = randomUUID();
+
 @Controller('health')
 export class HealthController {
     @Get()
@@ -16,7 +18,7 @@ export class HealthController {
             data: {
                 status: 'healthy',
                 timestamp: new Date().toISOString(),
-                uuid: randomUUID(),
+                uuid: serverUuid,
             },
         };
     }

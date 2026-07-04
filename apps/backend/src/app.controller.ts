@@ -2,7 +2,7 @@ import { Controller, Get, Header } from '@nestjs/common';
 import { cpus, freemem, hostname, platform, totalmem, uptime } from 'node:os';
 import { version } from 'node:process';
 
-const startedAt = Date.now();
+const startedAt = new Date();
 
 @Controller()
 export class AppController {
@@ -83,7 +83,7 @@ export class AppController {
       <dd>${uptimeSeconds}s</dd>
 
       <dt>Started at</dt>
-      <dd>${startedAt.toString()}</dd>
+      <dd>${startedAt.toISOString()}</dd>
     </dl>
   </body>
   </html>`;

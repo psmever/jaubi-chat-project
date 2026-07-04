@@ -3,6 +3,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.ts';
+import { ApiExceptionFilter } from './common/http/api-exception.filter.ts';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -23,6 +24,7 @@ async function bootstrap() {
             transform: true,
         }),
     );
+    app.useGlobalFilters(new ApiExceptionFilter());
 
     await app.listen(port);
     Logger.log(`Backend is running on http://localhost:${port}`, 'Bootstrap');
