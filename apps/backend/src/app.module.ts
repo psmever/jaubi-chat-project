@@ -6,6 +6,8 @@ import { HealthModule } from './modules/health/health.module.ts';
 import { PrismaModule } from './modules/prisma/prisma.module.ts';
 import { RealtimeModule } from './modules/realtime/realtime.module.ts';
 import { AppController } from './app.controller.ts';
+import { UsersModule } from './modules/users/users.module.ts';
+import { AuthModule } from './modules/auth/auth.module.ts';
 
 @Module({
     imports: [
@@ -17,6 +19,8 @@ import { AppController } from './app.controller.ts';
         PrismaModule,
         HealthModule,
         RealtimeModule,
+        UsersModule,
+        AuthModule,
     ],
     controllers: [AppController],
 })
