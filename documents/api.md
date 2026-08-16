@@ -10,11 +10,11 @@ Auth should be implemented before room and message APIs so REST and Socket.IO ca
 
 Initial endpoints:
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `POST /api/auth/refresh`
-- `POST /api/auth/logout`
-- `GET /api/users/me`
+- `POST /api/v1/auth/register`
+- `POST /api/v1/auth/login`
+- `POST /api/v1/auth/refresh`
+- `POST /api/v1/auth/logout`
+- `GET /api/v1/users/me`
 
 Initial backend structure:
 

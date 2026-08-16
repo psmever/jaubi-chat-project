@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { appConfig } from './config/app.config.ts';
 import { validateEnvironment } from './config/env.validation.ts';
@@ -8,6 +8,7 @@ import { RealtimeModule } from './modules/realtime/realtime.module.ts';
 import { AppController } from './app.controller.ts';
 import { UsersModule } from './modules/users/users.module.ts';
 import { AuthModule } from './modules/auth/auth.module.ts';
+import { RequestLoggingMiddleware } from './common/http/request-logging.middleware.ts';
 
 @Module({
     imports: [
@@ -24,4 +25,8 @@ import { AuthModule } from './modules/auth/auth.module.ts';
     ],
     controllers: [AppController],
 })
-export class AppModule {}
+export class AppModule {
+    configure(consumer: MiddlewareConsumer): void {
+        consumer.apply(RequestLoggingMiddleware).forRoutes('*');
+    }
+}
