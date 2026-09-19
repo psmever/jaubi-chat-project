@@ -24,15 +24,30 @@ export class ApiExceptionFilter implements ExceptionFilter {
 
         if (exception instanceof HttpException) {
             const status = exception.getStatus();
+            const exceptionResponse = exception.getResponse();
 
-            response.status(status).json({
+            const responseMessage =
+                typeof exceptionResponse === 'string'
+                    ? exceptionResponse
+                    : 'message' in exceptionResponse
+                      ? exceptionResponse.message
+                      : exception.message;
+
+            const message = Array.isArray(responseMessage)
+                ? responseMessage.filter((item): item is string => typeof item === 'string').join('\n')
+                : typeof responseMessage === 'string'
+                  ? responseMessage
+                  : exception.message;
+
+            const body: ApiErrorResponse = {
                 error: {
                     code: this.getHttpErrorCode(status),
-                    message: exception.message,
+                    message,
                     details: null,
                 },
-            });
+            };
 
+            response.status(status).json(body);
             return;
         }
 

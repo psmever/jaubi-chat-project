@@ -1,5 +1,6 @@
 import { ApiSuccessResponse } from '@jaubi-chat/api-contract';
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { RegisterDto } from './dto/register.dto.ts';
 
 type RegisterResponse = {
     message: string;
@@ -10,10 +11,11 @@ type RegisterResponse = {
     version: '1',
 })
 export class AuthController {
-    register(): ApiSuccessResponse<RegisterResponse> {
-        // email 유효성 검사
-        // password 유효성 검사
+    @Post('register')
+    register(@Body() body: RegisterDto): ApiSuccessResponse<RegisterResponse> {
         // email 죽복확인
+
+        console.debug(body);
 
         return {
             data: {
