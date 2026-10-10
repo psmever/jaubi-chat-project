@@ -1,4 +1,5 @@
 export type ApiSuccessResponse<T, TMeta = never> = {
+    message?: string;
     data: T;
     meta?: TMeta;
 };
