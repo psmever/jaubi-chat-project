@@ -28,19 +28,36 @@ enum MessageType {
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
-  displayName  String
-  passwordHash String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id              String    @id @default(uuid())
+  email           String    @unique
+  displayName     String
+  passwordHash    String
+  emailVerifiedAt DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
-  roomMembers  RoomMember[]
-  messages     Message[]
-  reads        MessageRead[]
-  deviceTokens DeviceToken[]
+  emailVerificationTokens EmailVerificationToken[]
+  roomMembers             RoomMember[]
+  messages                Message[]
+  reads                   MessageRead[]
+  deviceTokens            DeviceToken[]
 
   @@map("users")
+}
+
+model EmailVerificationToken {
+  id        String    @id @default(uuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("email_verification_tokens")
 }
 
 model Room {
