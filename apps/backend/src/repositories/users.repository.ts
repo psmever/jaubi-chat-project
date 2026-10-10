@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service.ts';
+import { PrismaService } from '../infrastructure/prisma/prisma.service.ts';
 
 type CreateUserInput = {
     email: string;
@@ -8,7 +8,7 @@ type CreateUserInput = {
 };
 
 @Injectable()
-export class UsersService {
+export class UsersRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     findById(id: string) {

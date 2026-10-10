@@ -1,6 +1,6 @@
 import { ApiSuccessResponse } from '@jaubi-chat/api-contract';
 import { Body, Controller, Post } from '@nestjs/common';
-import { RegisterDto } from './dto/register.dto.ts';
+import { RegisterDto } from '../dto/auth/register.dto.ts';
 
 type RegisterResponse = {
     message: string;
