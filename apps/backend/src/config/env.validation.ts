@@ -8,6 +8,8 @@ const environmentSchema = z
 
         BACKEND_CORS_ORIGIN: z.string().url().default(`http://localhost:4002`),
 
+        FRONTEND_URL: z.string().url().default('http://localhost:4002'),
+
         DATABASE_URL: z
             .string()
             .min(1)
