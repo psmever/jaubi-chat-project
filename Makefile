@@ -15,7 +15,7 @@ CREATE_FILE_PROJECT := $(strip \
 .PHONY: help install dev app\:backend app\:web app\:mobile build lint typecheck \
 	create\:file \
 	db\:build db\:pull db\:up db\:down db\:restart db\:ps db\:logs db\:init db\:wait db\:reset \
-	prisma\:generate prisma\:migrate jwt\:generate check
+	prisma\:generate prisma\:migrate jwt\:generate check check\:backend
 
 help:
 	@printf '%s\n' \
@@ -34,6 +34,7 @@ help:
 		'' \
 		'검증' \
 		'  check            lint와 typecheck 실행' \
+		'  check:backend    백엔드 타입 검사, 전체 lint, 백엔드 빌드' \
 		'  build            패키지 빌드' \
 		'  lint             패키지 lint 실행' \
 		'  typecheck        패키지 타입 검사' \
@@ -102,6 +103,11 @@ typecheck:
 check:
 	$(PNPM) run lint
 	$(PNPM) run typecheck
+
+check\:backend:
+	$(PNPM) run backend:typecheck
+	$(PNPM) run lint
+	$(PNPM) run backend:build
 
 db\:build:
 	$(PNPM) run docker:build

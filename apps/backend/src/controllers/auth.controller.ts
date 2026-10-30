@@ -21,6 +21,7 @@ export class AuthController {
         @Inject(appConfig.KEY)
         private readonly config: ConfigType<typeof appConfig>,
     ) {}
+
     @Post('register')
     async register(@Body() body: RegisterDto): Promise<ApiSuccessResponse<{ id: string; email: string; displayName: string }>> {
         const emailExists = await this.authService.existsUserEmail(body.email);
@@ -50,7 +51,7 @@ export class AuthController {
             });
 
             return {
-                message: 'User registered successfully',
+                message: '회원가입이 완료되었습니다.',
                 data: {
                     id: createdUser.id,
                     email: createdUser.email,
