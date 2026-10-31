@@ -8,7 +8,7 @@ const environmentSchema = z
 
         BACKEND_CORS_ORIGIN: z.string().url().default(`http://localhost:4002`),
 
-        FRONTEND_URL: z.string().url().default('http://localhost:4002'),
+        FRONTEND_URL: z.string().url().default(`http://localhost:4002`),
 
         DATABASE_URL: z
             .string()
@@ -28,12 +28,25 @@ const environmentSchema = z
         SMTP_PORT: z.coerce.number().int().min(1).max(65535).default(465),
         SMTP_USER: z.string().email(),
         SMTP_PASSWORD: z.string().min(1),
+        SMTP_DEV_RECIPIENT: z.string().email().optional(),
 
         JWT_ACCESS_SECRET: z.string().min(32).optional(),
         JWT_REFRESH_SECRET: z.string().min(32).optional(),
     })
-    .passthrough();
+    .passthrough()
+    .superRefine((environment, context) => {
+        if (environment.NODE_ENV === 'local' && !environment.SMTP_DEV_RECIPIENT) {
+            context.addIssue({
+                code: 'custom',
+                path: ['SMTP_DEV_RECIPIENT'],
+                message: 'SMTP_DEV_RECIPIENT is required when NODE_ENV is local',
+            });
+        }
+    });
 
+/**
+ * 애플리케이션 환경변수를 검증하고 변환된 설정값을 반환한다.
+ */
 export function validateEnvironment(config: Record<string, unknown>): Record<string, unknown> {
     const result = environmentSchema.safeParse(config);
 

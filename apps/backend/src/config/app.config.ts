@@ -13,5 +13,6 @@ export const appConfig = registerAs('app', () => ({
         port: Number(process.env.SMTP_PORT ?? 465) || 465,
         user: process.env.SMTP_USER!,
         password: process.env.SMTP_PASSWORD!,
+        devRecipient: process.env.SMTP_DEV_RECIPIENT,
     },
 }));
