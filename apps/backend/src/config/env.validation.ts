@@ -24,6 +24,11 @@ const environmentSchema = z
             })
             .optional(),
 
+        SMTP_HOST: z.string().trim().min(1).default('smtp.gmail.com'),
+        SMTP_PORT: z.coerce.number().int().min(1).max(65535).default(465),
+        SMTP_USER: z.string().email(),
+        SMTP_PASSWORD: z.string().min(1),
+
         JWT_ACCESS_SECRET: z.string().min(32).optional(),
         JWT_REFRESH_SECRET: z.string().min(32).optional(),
     })

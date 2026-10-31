@@ -8,4 +8,10 @@ export const appConfig = registerAs('app', () => ({
     port: Number(process.env.BACKEND_PORT ?? 4001) || 4001,
     globalPrefix: process.env.GLOBAL_PREFIX || 'api',
     corsOrigin: process.env.BACKEND_CORS_ORIGIN || 'http://localhost:4002',
+    gmail: {
+        host: process.env.SMTP_HOST || 'smtp.gmail.com',
+        port: Number(process.env.SMTP_PORT ?? 465) || 465,
+        user: process.env.SMTP_USER!,
+        password: process.env.SMTP_PASSWORD!,
+    },
 }));
